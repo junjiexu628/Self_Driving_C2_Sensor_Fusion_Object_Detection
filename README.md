@@ -9,6 +9,11 @@ The measurement function is a bit complex, including gamma(), S() and K(). The r
 
 get_H() function is also necessary part for the measurement update, and it is from the Measurement class.
 
+The plot of RMSE <0.35
+
+![step 1](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step1_1.PNG)
+![step 1](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step1_2.PNG)
+
 - Step2: Track management
 
 intialize the track state as track.x and track.P based on the measurement class. Set the track state as three situations: initialized, tentative and confirmed by the track.score.
@@ -17,13 +22,25 @@ Delete the track by the delete_track function and update the track list.
 
 The functions of manage_track(), delete_track(), handle_update_track() need to be created.
 
+The plot of RMSE around 0.8
+
+![step 2](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step2_2.PNG)
+
 - Step3: Data association
 
 The MDH() function is defined for calculating the Mahalanobis distance of the track and measurement.Also the gating threshold is used for excluding these high MHD pairs. The minimum value of pair can be found and update the unassigned track and measurement list. Utill the data assocaitaion matrix is inf, no pairs are left.
 
+![step 3](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step31_1.PNG)
+![step 3](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step31_2.PNG)
+
 - Step4: Camera sensor fusion
 - 
 Activate the camera detection by implement the in_fov() function to check the object in the vision of the sensor, and initialize the camera Z,R parameters.Finish the get_hx() functon for camera nonlinear measurement definition.
+
+The plot of RMSE <0.2
+
+![step 4](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step41_1.PNG)
+![step 4](https://github.com/junjiexu628/Self_Driving_C2_Sensor_Fusion_Object_Detection/blob/main/Image/step41_2.PNG)
 
 I think the overall structure of this sensor fusion is most difficult for me. Every separate part is clear, but how to integrate them into one is not easy for me. This project is suitable to understand the the whole process and all task is covered by the course.
 
@@ -32,7 +49,7 @@ In theory the camera has high resolution, better on the detection, espacially in
 
 Lidar provides the precise the spatial coordinate of the objects and more accurate distance information of the objects. Even more the Lidar performs very well in the dark night scene.
 
-The camera-lidar fusion is better than the any single sensor on the overall detection and track performance. They combine their advantage and result in low RMSE than the only Lidar tracking results. Although our project doesn't make the best RMSE result due to the default parameter, the benefit of sensor fusion is definitely.
+The camera-lidar fusion is better than the any single sensor on the overall detection and track performance. They combine their advantage and result in low RMSE than the only Lidar tracking results. Our project of camera-lidar fusion make the a bit better RMSE result than the lidar-onlybased on the default parameter, so the benefit of sensor fusion is definitely.
 
 ## 3, Which challenges will a sensor fusion system face in real-life scenarios? Did you see any of these challenges in the project?
 Our sensor fusion system could face the real-life issues. 
